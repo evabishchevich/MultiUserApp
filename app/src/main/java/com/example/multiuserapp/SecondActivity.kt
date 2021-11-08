@@ -61,12 +61,10 @@ class SecondActivity : AppCompatActivity() {
         super.onStart()
 
         val intent = Intent(this, CounterServiceImpl::class.java)
-        val userSystem = 0
-        bindServiceAsUser(
+        bindService(
             intent,
             serviceConnection,
             Context.BIND_AUTO_CREATE,
-            UserHandle.getUserHandleForUid(userSystem)
         )
     }
 

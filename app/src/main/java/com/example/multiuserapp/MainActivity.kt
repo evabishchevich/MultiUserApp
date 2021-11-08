@@ -10,7 +10,6 @@ import android.os.IBinder
 import android.os.Looper
 import android.os.Process
 import android.os.RemoteException
-import android.os.UserHandle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.multiuserapp.databinding.ActivityMainBinding
@@ -66,13 +65,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         val intent = Intent(this, CounterServiceImpl::class.java)
-//        startServiceAsUser(intent, UserHandle(0))
-        val userSystem = 0
-        bindServiceAsUser(
+        bindService(
             intent,
             mServiceConnection,
             Context.BIND_AUTO_CREATE,
-            UserHandle.getUserHandleForUid(userSystem)
         )
     }
 
